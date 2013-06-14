@@ -1,0 +1,127 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Restaurant"
+        ],
+        "stores": [
+            "Restaurants"
+        ],
+        "views": [
+            "Restaurant",
+            "MenuRestaurant",
+            "RestaurantPanel"
+        ],
+        "designer|userClassName": "Restaurant"
+    },
+    "designerId": "e804947a-9ad7-4c57-af33-fd8994e6ac70",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onButtonChange",
+                "designer|params": [
+                    "btn",
+                    "item"
+                ],
+                "implHandler": [
+                    "var grid = this.getRestaurant();\r",
+                    "grid.features[0].setView(btn.viewMode);"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "restopanel switchbuttonsegment"
+            },
+            "designerId": "4a5469b6-5856-4a46-a801-9123ccf4949d"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "restaurant",
+                "selector": "restaurant",
+                "xtype": null
+            },
+            "designerId": "fca3dbfc-521c-49ed-9ab2-8897b5514946"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMenuitemClick",
+                "implHandler": [
+                    "var grid = this.getRestaurant();\r",
+                    "grid.features[0].setView(item.viewMode);"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.menu.Item",
+                "designer|controlQuery": "splitbutton menuitem"
+            },
+            "designerId": "a80eb9ae-a45f-4fcc-afae-3bfe45536655"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onGridpanelItemContextMenu",
+                "implHandler": [
+                    "var contextMenu = Ext.create('TileView.view.MenuRestaurant');\r",
+                    "\r",
+                    "e.stopEvent();\r",
+                    "contextMenu.showAt(e.getXY());\r",
+                    "return false;"
+                ],
+                "name": "itemcontextmenu",
+                "scope": "me",
+                "designer|targetType": "Ext.grid.Panel",
+                "designer|controlQuery": "gridpanel"
+            },
+            "designerId": "fb4a1aef-dcc3-4ef7-9f5e-05ef94bb0acb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onGridpanelSelectionChange",
+                "implHandler": [
+                    "if (selected.length) {\r",
+                    "    Ext.getCmp('tileViewPanel').update(selected[0].data);\r",
+                    "}"
+                ],
+                "name": "selectionchange",
+                "scope": "me",
+                "designer|targetType": "Restaurant",
+                "designer|controlQuery": "gridpanel"
+            },
+            "designerId": "8dc19f60-d601-497d-91a9-89fd4f089f23"
+        }
+    ]
+}
